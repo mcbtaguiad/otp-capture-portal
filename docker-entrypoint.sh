@@ -43,7 +43,7 @@ if [ "$1" = 'otpspot' ]; then
 
   echo -e "[\e[33motpspot\e[0m] Starting otpspot..."
   # exec $PYTHON $OTPSPOT_DIR/otpspot.py
-  exec gunicorn --workers 5 --bind 0.0.0.0:8000 wsgi:app --chdir $OTPSPOT_DIR
+  exec gunicorn --worker-class gthread --threads 2 --workers 1 --bind 0.0.0.0:8000 wsgi:app --chdir $OTPSPOT_DIR
 fi
 
 # execute the provided command
