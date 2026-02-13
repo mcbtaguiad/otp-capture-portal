@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+
+    <title>{{ title }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="web/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link rel="stylesheet" href="web/css/font-awesome.min.css">
+    <link rel="stylesheet" href="web/css/bulma.min.css">
+    <link rel="stylesheet" href="web/css/all.css">
+    <link rel="stylesheet" href="web/css/style.css">
+    <!-- <style>
+      
+    </style> -->
+    <!-- <style type="text/css">
+  
+    </style> -->
+    <script src="web/js/jquery.min.js"></script>
+    <script src="web/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="page">
+    
+        <div class="head">
+          <br>
+          <figure id="logo">
+            <a href="/">
+              <img src="data/logo.webp" alt="Logo">
+            </a>
+          </figure>
+        </div>
+
+        <div class="main">
+            <section class="section">
+                <div class="container">
+                  
+
+                  <br>
+
+                  <div id="contact_form" class="content is-size-5 has-text-centered has-text-weight-bold">Token Generator</div>
+
+                  <div class="warning-box">
+                    <strong>Warning!</strong> Make sure to enter the token/voucher before the next refresh.
+                    <!-- <span class="close-button">&times;</span> -->
+                  </div>
+                  
+                  
+                  <!-- <h3>Current Token</h3> -->
+                  <div class="code" id="code">------</div>
+
+                  <img id="qr" src="" alt="QR code" width="200" height="200">
+
+                  <div id="progress"><div id="bar"></div></div>
+                  <div><small>Next refresh in <span id="remain">--</span>s</small></div>
+           
+
+                  <br>
+                  <!-- Logout button -->
+                  <form action="{{ url_for('logout') }}" method="get">
+                    <button class="button is-link" type="submit">Logout</button>
+                  </form>
+
+
+            </section>
+        </div>
+    </div>
+    
+    <script>
+      let period = 30;
+      let nextUpdate = 0;
+      let secret = "{{ secret }}";
+      let asOtpauth = {{ 'true' if as_otpauth else 'false' }};
+  
+      async function updateTOTP() {
+        try {
+          const res = await fetch(`/totp?secret=${secret}&as_otpauth=${asOtpauth}`);
+          const data = await res.json();
+          document.getElementById('code').textContent = data.code;
+          document.getElementById('qr').src = "data:image/png;base64," + data.qr_b64;
+          nextUpdate = data.next_update;
+          period = data.period;
+        } catch (err) {
+          console.error(err);
+        }
+      }
+  
+      function tick() {
+        const now = Math.floor(Date.now() / 1000);
+        const remain = Math.max(0, nextUpdate - now);
+        const pct = ((period - remain) / period) * 100;
+        document.getElementById('bar').style.width = pct + "%";
+        document.getElementById('remain').textContent = remain;
+  
+        if (remain <= 0) updateTOTP();
+        requestAnimationFrame(tick);
+      }
+  
+      updateTOTP();
+      tick();
+    </script>
+</body>
+
+</footer>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <title>{{ title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="web/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="web/css/font-awesome.min.css">
+  <link rel="stylesheet" href="web/css/bulma.min.css">
+  <link rel="stylesheet" href="web/css/all.css">
+  <link rel="stylesheet" href="web/css/style.css">
+
+  <script src="web/js/jquery.min.js"></script>
+  <script src="web/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="page" style="display:flex; flex-direction:column; min-height:100vh;">
+    
+    <div class="head">
+      <br>
+      <figure id="logo">
+        <a href="/">
+          <img src="data/logo.webp" alt="Logo">
+        </a>
+      </figure>
+    </div>
+
+    <div class="main" style="flex:1;">
+      <section class="section">
+        <div class="container">
+          <header>
+            <div class="container has-text-center">
+              <h1 id="terms-title">{{ business_name }}</h1>
+              <p class="lead">By connecting to our free Wi-Fi network, you agree to these terms.</p>
+            </div>
+          </header>
+          <br>
+          <ol class="container has-text-left">
+            <li>
+              <strong>Acceptable Use</strong><br>
+              The Wi-Fi service is provided for personal, non-commercial use while on the premises. Users must not engage in illegal, harmful, or disruptive activities (for example: hacking, spamming, or accessing illegal content).
+            </li>
+            <li>
+              <strong>Privacy</strong><br>
+              We may collect limited connection information (such as device type, connection times, and usage metrics) to maintain and secure the service. We do not sell personal information to third parties.
+            </li>
+            <li>
+              <strong>Security</strong><br>
+              This is a public network. You are responsible for protecting your personal data and devices. The coffee shop does not guarantee the security or confidentiality of data transmitted over the network.
+            </li>
+            <li>
+              <strong>Access &amp; Availability</strong><br>
+              Wi-Fi access is provided at the coffee shop’s discretion and may be suspended, limited, or terminated at any time without prior notice.
+            </li>
+            <li>
+              <strong>Liability</strong><br>
+              Use of the Wi-Fi network is at your own risk. The coffee shop is not liable for any loss, damage, or unauthorized access resulting from use of this service.
+            </li>
+            <li>
+              <strong>Updates</strong><br>
+              These terms may be updated periodically. Continued use of the Wi-Fi indicates acceptance of the current terms.
+            </li>
+          </ol>
+          <br><br>
+          <div>
+            For assistance or questions about these terms, please ask a staff member.
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+
+    <title>{{ title }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="web/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link rel="stylesheet" href="web/css/font-awesome.min.css">
+    <link rel="stylesheet" href="web/css/bulma.min.css">
+    <link rel="stylesheet" href="web/css/all.css">
+    <link rel="stylesheet" href="web/css/style.css">
+    <!-- <style type="text/css">
+
+body {
+  height: 100vh;
+  background: url("web/images/background.jpg") 50% fixed;
+  background-size: cover;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+  background: rgba(4, 40, 68, 0.85);
+}
+    </style> -->
+    <script src="web/js/jquery.min.js"></script>
+    <script src="web/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="page">
+    
+        <div class="head">
+            <br>
+            <figure id="logo">
+                <img src="data/logo.webp">
+            </figure>
+        </div>
+    
+        <div class="main">
+            <section class="section">
+                <div class="container">
+                    <div id="contact_form" class="content is-size-5 has-text-centered has-text-weight-bold">{{ title }}
+                    </div>
+                    <div id="message" class="alert alert-info col-sm-12" align="center">{{ welcome_message }}</div>
+                    <form id="loginform" class="form-horizontal" role="form">
+                        <div class="field">
+                            <div class="control has-icons-left">
+                            <input id="otp" type="text" class="input" name="otp" placeholder="{{ otp_placeholder }}">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-coffee"></i>
+                                </span>
+                            </div>
+                        </div>
+                        
+                        
+
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+<script type="text/javascript">
+function getParameter(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+var working = false;
+$("#register").unbind().on('click', function(e) {
+	// enter loading status
+	e.preventDefault();
+	$("#register").html('<span class="fa fa-refresh fa-spin"></span> {{ registering_message }}')
+	$("#register").addClass("disabled")
+	// retrieve parameters from query string
+	var mac = getParameter("mac");
+	var ip = getParameter("ip");
+	var authaction = getParameter("authaction");
+	var tok = getParameter("tok");
+	var redir = getParameter("redir");
+	var gatewayname = getParameter("gatewayname");
+	// retrieve otp
+	var otp = $("#otp").val()
+	//validate otp
+	setTimeout(function() {
+		var url = "/register?otp="+otp+"&mac="+mac+"&ip="+ip+"&tok="+tok+"&gatewayname="+gatewayname
+		$.get(url, function( data ) {
+			if (data == "0") {
+				$("#message").html('<i class="fa fa-check"></i> {{ registered_successfully }}')
+				$("#message").removeClass('hidden alert-danger alert-success alert-info')
+				$("#message").addClass('alert-success')
+				$("#loginform").addClass('hidden')
+				// redirect to $authaction
+				window.location.href = authaction+"?"+tok+"&redir="+redir+"&mac="+mac+"&ip="+ip+"&tok="+tok+"&gatewayname="+gatewayname;
+			} else {
+				var error;
+				if (data == "1") error = "{{ error_invalid_parameter }}";
+				if (data == "2") error = "{{error_invalid_otp }}";
+				$("#message").html('<i class="fa fa-exclamation-triangle"></i> {{ error_banner }}: '+error)
+				$("#message").removeClass('hidden alert-danger alert-success alert-info')
+				$("#message").addClass('alert-danger')
+				$("#register").html('Connect')
+				$("#register").removeClass("disabled")
+			}
+		});
+	}, 1000);
+});
+</script>
+</body>
+</html>

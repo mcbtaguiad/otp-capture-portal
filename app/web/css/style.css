@@ -1,0 +1,260 @@
+/*
+    *{ border: 1px solid red; }
+*/
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  text-align: center;
+  /* max-width: 400px; */
+  margin: 4rem auto;
+  line-height: 1.6;
+}
+body,
+.content,
+.section,
+.container,
+p,
+h1, h2, h3, h4, h5, h6,
+label {
+    color: #dadada !important;
+}
+.has-text-centered,
+.has-text-weight-bold {
+    color: #dadada !important;
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 40, 68, 0.75);
+    z-index: -1;
+}
+/* a {
+    color: #dadada;
+    text-decoration: underline;
+} */
+
+html, body {
+    min-height: 100%;
+}
+
+h1 { font-size: 1.5rem; margin-bottom: 1rem; }
+.code { font-size: 2.5rem; font-weight: bold; margin: 1rem 0; }
+/* img { margin: 1rem auto; border: 1px solid #ccc; border-radius: 8px; } */
+#progress {
+  width: 100%;
+  height: 8px;
+  background: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 1rem 0;
+  
+}
+strong {
+    color: #dadada !important;
+}
+#bar {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4);
+  width: 0%;
+  transition: width 1s linear;
+}
+small { color: #666; }
+
+
+.warning-box {
+  background-color: #ffe0b2; /* Light orange */
+  color: #e65100; /* Dark orange */
+  padding: 15px;
+  border: 1px solid #ff9800; /* Orange border */
+  border-radius: 5px;
+  position: relative; /* For positioning the close button */
+  width: 330px
+  
+}
+
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.page
+{
+  min-height: 100vh;
+  margin: 0 auto;
+  max-width: 100%;
+  font-family: "Ariel", sans-serif;
+}
+
+/* .page {
+  height: 100vmin; 
+  width: 100vmin;
+  margin: 0 auto;
+  max-width: 100%;
+  font-family: "Arial", sans-serif;
+} */
+
+a:link
+{
+  text-decoration: underline;
+}
+
+.head
+{
+  text-align: center;
+  padding-top: 50px;   /* add space from top */
+  padding-bottom: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main
+{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+#logo
+{
+  width: 35%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+#contact_form
+{
+  margin-bottom: 5px;
+}
+
+#margin_zero
+{
+  margin: 0;
+}
+
+/* Media Query for iPads */
+
+@media only screen 
+and (min-width: 600px)
+{
+  #logo
+  {
+    max-width: 40%;
+  }
+}
+
+/* Media Query for Desktops */
+
+@media only screen   
+and (min-width: 768px)
+{
+  #logo
+  {
+    max-width: 10%;
+  }
+  .main
+  {
+    height: 80%;
+  }
+}
+
+.logout-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+}
+
+
+#message {
+  width: 330px;              
+  /* max-width: 90%;             */
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+#message div {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+/* Footer with white background */
+.footer {
+  /* background-color: #ffffff;
+  color: #333333; */
+  background: rgba(255, 255, 255, 0.85); /* semi-transparent */
+  backdrop-filter: blur(6px); /* optional glass effect */
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
+  bottom: 0;
+  font-family: "Ariel", sans-serif;
+}
+
+.footer a {
+  color: #333333;
+  margin: 0 8px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+  color: #1e90ff; /* Optional hover color */
+}
+
+.footer .icon {
+  color: #333333;
+  margin: 0 5px;
+  transition: 0.3s;
+}
+
+.footer .icon:hover {
+  color: #1e90ff; /* Optional hover color */
+}
+
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
+}
+
+body {
+    margin: 0;
+
+    background: url("/data/background.jpeg") no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed; /* optional */
+}
+
+
+
+/* Make page content centered vertically */
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Center the main section */
+.main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

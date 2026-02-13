@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+
+    <title>{{ title }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="web/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link rel="stylesheet" href="web/css/font-awesome.min.css">
+    <link rel="stylesheet" href="web/css/bulma.min.css">
+    <link rel="stylesheet" href="web/css/all.css">
+    <link rel="stylesheet" href="web/css/style.css">
+    <!-- <style type="text/css">
+
+
+    </style> -->
+    <script src="web/js/jquery.min.js"></script>
+    <script src="web/js/bootstrap.min.js"></script>
+    <script src="web/js/otp.js"></script>
+</head>
+<body>
+    <div class="page">
+    
+        <div class="head">
+            <br>
+            <figure id="logo">
+                <a href="/">
+                    <img src="data/logo.webp" alt="Logo">
+                </a>
+            </figure>
+        </div>
+    
+        <div class="main">
+            <section class="section">
+                <div class="container">
+                    <div class="content is-size-5 has-text-centered has-text-weight-bold">{{ title }}
+                    </div>
+                    <div id="message" class="alert alert-info col-sm-12" align="center">{{ welcome_message }}</div>
+                    <form id="loginform" class="form-horizontal" role="form">
+                        <div class="field">
+                            <div class="control has-icons-left">
+                            <input id="otp" type="text" class="input" name="otp" placeholder="{{ otp_placeholder }}">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-coffee"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="columns is-centered is-mobile">
+                            <div class="control">
+                                <label class="checkbox">
+                                    <input type="checkbox" id="agreeBox"">
+                                    I agree to the <a href="policy">Terms of Use</a>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="buttons is-centered">
+                            <button id="register" class="button is-link">Connect</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+<!-- <script type="text/javascript">
+    
+</script> -->
+</body>
+
+</html>
