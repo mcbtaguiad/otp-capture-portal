@@ -1,0 +1,16 @@
+services:
+    otp-capture-portal:
+        container_name: otp-capture-portal
+        image: ghcr.io/mcbtaguiad/otp-capture-portal:main
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "8000:8000"
+        environment:
+            - BUSINESS_NAME=Swamp Coffee
+            - ADMIN_USERNAME=admin
+            - ADMIN_PASSWORD=password123
+        volumes:
+            - ./app/data:/otpspot/data
+    
