@@ -1,6 +1,8 @@
 FROM alpine:3
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 
+RUN apk update && apk upgrade && rm -rf /var/cache/apk/*
+
 # define variables
 
 # make sure these variables are set the same as `docker-entrypoint.sh`
