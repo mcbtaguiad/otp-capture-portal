@@ -1,11 +1,9 @@
 > [!NOTE]
-> This project is a fork from [user2684/otpspot](https://github.com/user2684/otpspot) repo.
-
-
-In deploying capture portal solution to client, I usually use OpenNDS and OpenWrt, or simply TP-Link Omada Controller. Due to hardware limitation, we will be using nodogsplash on OpenWrt connected to a external server that will handle the authentication. Instead of common voucher generation, it will be generated using OTP. Thanks to [user2684](https://github.com/user2684) solution. 
-
+> This project is a fork of [user2684/otpspot](https://github.com/user2684/otpspot).
+> Original work belongs to the upstream author(s) and is licensed under GPL-3.0.
+> This fork includes modifications and maintenance changes by me.
 ## What's new?
-Not too much was added, I strictly set the deployment to Docker. Added an admin page that shows newly generated OTP - code and QR for easy input. I also added background and logo which can be dynamically change (docker mount) - this will be helpful for deployment for multiple client. 
+Strictly set the deployment to Docker. Added an admin page that shows newly generated OTP - code and QR for easy input. I also added background and logo which can be dynamically change (docker mount) - this will be helpful for deployment for multiple client. 
 
 ## How it works
 Upon connecting to the guest WLAN, nodogsplash flags the client as requiring authentication and redirects it to the captive portal, which prompts for a one-time access code.
